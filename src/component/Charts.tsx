@@ -11,6 +11,7 @@ type Props = {
     }[];
 };
 
+// 都道府県のグラフを表示
 const Graph: React.FC<Props> = ({ populationdata }) => {
     let series: Highcharts.SeriesOptionsType[] = [];
     let categories = [];
@@ -32,7 +33,7 @@ const Graph: React.FC<Props> = ({ populationdata }) => {
 
     const options: Highcharts.Options = {
         title: {
-            text: "総人口推移",
+            text: "人口推移",
         },
         xAxis: {
             title: {
@@ -53,34 +54,12 @@ const Graph: React.FC<Props> = ({ populationdata }) => {
     };
 
     return (
-        <div>
+        <div style={{marginLeft: "5pt", marginRight: "5pt"}}>
             <HighchartsReact highcharts={Highcharts} options={options}/>
+            <p style={{textAlign:"right", marginRight:"5px"}}>※ 2020年までが実績値。それ以降は推計値。</p>
         </div>
     )
 
 }
 
 export default Graph;
-
-/* function App(props: HighchartsReact.Props) {
-    const options: Highcharts.Options = {
-        title: {
-            text: 'My chart'
-        },
-        series: [{
-            type: 'line',
-            data: [[1,1], [1,2], [3,3], [5,4]]
-        }]
-    }
-    const chartComponentRef = useRef<HighchartsReact.RefObject>(null);
-
-    return (
-        <HighchartsReact
-            highcharts={Highcharts}
-            options={options}
-            ref={chartComponentRef}
-            {...props} />
-    )
-}
-
-export default App; */
