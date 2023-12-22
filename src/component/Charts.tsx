@@ -5,6 +5,7 @@ import HighchartsReact from "highcharts-react-official";
 import { Imprima } from 'next/font/google';
 
 type Props = {
+    radioLabel: string;
     populationdata: {
         prefName: string;
         data: { year: number; value: number }[];
@@ -12,7 +13,7 @@ type Props = {
 };
 
 // 都道府県のグラフを表示
-const Graph: React.FC<Props> = ({ populationdata }) => {
+const Graph: React.FC<Props> = ({ radioLabel, populationdata }) => {
     let series: Highcharts.SeriesOptionsType[] = [];
     let categories = [];
 
@@ -33,7 +34,7 @@ const Graph: React.FC<Props> = ({ populationdata }) => {
 
     const options: Highcharts.Options = {
         title: {
-            text: "人口推移",
+            text: radioLabel+"推移",
         },
         xAxis: {
             title: {

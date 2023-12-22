@@ -127,7 +127,7 @@ const Main: React.FC = () => {
             c_prefPopulation.splice(deleteIndex, 1);
             setPrefPopulation(c_prefPopulation);
         }
-        console.log(c_prefPopulation)
+        //console.log(c_prefPopulation)
     };
 
     const options = [
@@ -137,7 +137,7 @@ const Main: React.FC = () => {
         { label: '老年人口', value: 'elderly people' },
     ];
     //console.log(options[0].label)
-    const [selectedValue, setSelectedValue] = useState<string>('');
+    const [selectedValue, setSelectedValue] = useState<string>(options[0].value);
     const handleRadioButtonChange = (value: string) => {
         setSelectedValue(value);
     };
@@ -157,10 +157,36 @@ const Main: React.FC = () => {
                 />
             )}
             <h2 style={Styles.label}>人口推移グラフ</h2>
+            
+            { selectedValue === options[0].value ? (
+                <Graph 
+                radioLabel={options[0].label}
+                populationdata={prefPopulation}
+                />
+            ) : ( selectedValue === options[1].value ? (
+                <Graph 
+                radioLabel={options[1].label}
+                populationdata={prefPopulation}
+                />
+            ) : ( selectedValue === options[2].value ? (
+                <Graph 
+                radioLabel={options[2].label}
+                populationdata={prefPopulation}
+                />
+            ) : (
+                <Graph 
+                radioLabel={options[3].label}
+                populationdata={prefPopulation}
+                />
+            ))
 
-            <Graph
+            )
+            }
+
+            {/* <Graph
+            radioLabel={options.label}
             populationdata={prefPopulation}
-            />
+            /> */}
         </main>
     )
 }
