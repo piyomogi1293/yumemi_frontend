@@ -29,7 +29,7 @@ const Styles: { [key: string]: React.CSSProperties } = {
         padding: "2px",
         margin: "0.1rem",
     },
-  };
+};
 
 // 都道府県の一覧のチェックボックスを表示する
 const CheckField: React.FC<Props> = ({ prefectures, onChange }) => {

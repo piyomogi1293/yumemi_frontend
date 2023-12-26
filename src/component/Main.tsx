@@ -50,17 +50,16 @@ const Main: React.FC = () => {
         prefCode: number,
         check: boolean
     ) => {
-        let c_prefPopulation = prefPopulation.slice();
+        let c_prefPopulation = prefPopulation.slice(); // チェックされた都道府県のデータを格納する変数
 
+        // チェックされた時に表示するデータを用意
         if (check) {
-            if (
-                c_prefPopulation.findIndex((value) => value.prefName === prefName) !== -1
-            )
+            if (c_prefPopulation.findIndex((value) => value.prefName === prefName) !== -1)
                 return;
 
             // 都道府県の人口構成 
             // 入手データについて: "https://opendata.resas-portal.go.jp/docs/api/v1/population/composition/perYear.html"
-            if (selectedValue === options[0].value) {
+            if (selectedValue === options[0].value) { // 総人口
                 axios.get("https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=" + String(prefCode),
                     { headers: { "X-API-KEY": API_KEY }, }
                 )
@@ -74,7 +73,7 @@ const Main: React.FC = () => {
                     })
                     .catch((error) => { return; });
             }
-            else if (selectedValue === options[1].value) {
+            else if (selectedValue === options[1].value) { // 年少人口
                 axios.get("https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=" + String(prefCode),
                     { headers: { "X-API-KEY": API_KEY }, }
                 )
@@ -88,7 +87,7 @@ const Main: React.FC = () => {
                     })
                     .catch((error) => { return; });
             }
-            else if (selectedValue === options[2].value) {
+            else if (selectedValue === options[2].value) { // 生産年齢人口
                 axios.get("https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=" + String(prefCode),
                     { headers: { "X-API-KEY": API_KEY }, }
                 )
@@ -102,7 +101,7 @@ const Main: React.FC = () => {
                     })
                     .catch((error) => { return; });
             }
-            else {
+            else { // 老年人口
                 axios.get("https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=" + String(prefCode),
                     { headers: { "X-API-KEY": API_KEY }, }
                 )
@@ -119,6 +118,7 @@ const Main: React.FC = () => {
 
 
         }
+        // チェックを消した時の処理
         else {
             const deleteIndex = c_prefPopulation.findIndex(
                 (value) => value.prefName === prefName
@@ -130,6 +130,7 @@ const Main: React.FC = () => {
         //console.log(c_prefPopulation)
     };
 
+    /* ラジオボタンの選択肢 */
     const options = [
         { label: '総人口', value: 'all' },
         { label: '年少人口', value: 'child' },
@@ -144,11 +145,14 @@ const Main: React.FC = () => {
     console.log(selectedValue)
     return (
         <main>
+            {/* radio button */}
             <h2 style={Styles.label}>データ種別</h2>
             <RadioButtonGroup
                 options={options}
                 value={selectedValue}
                 onChange={handleRadioButtonChange} />
+            
+            {/* 都道府県ごとのチェックボックスのリスト */}
             <h2 style={Styles.label}>都道府県</h2>
             {prefectures && (
                 <CheckField
@@ -156,8 +160,9 @@ const Main: React.FC = () => {
                     onChange={handleClickCheck}
                 />
             )}
+
             <h2 style={Styles.label}>人口推移グラフ</h2>
-            
+            {/* グラフのタイトルをradio buttonの選択によって変更 */}
             { selectedValue === options[0].value ? (
                 <Graph 
                 radioLabel={options[0].label}
@@ -178,9 +183,7 @@ const Main: React.FC = () => {
                 radioLabel={options[3].label}
                 populationdata={prefPopulation}
                 />
-            ))
-
-            )
+            )))
             }
 
             {/* <Graph
