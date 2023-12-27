@@ -57,7 +57,7 @@ const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({ options, value, onC
             <p style={Styles.text}> 表示するデータを選んでください。 なお、選択を変更した後はもう一度都道府県を選び直してください。</p>
             <div style={Styles.radioList_b}>
                 {options.map((option) => (
-                    <div style={Styles.radioList}>
+                    <div key={option.value} style={Styles.radioList}>
                         <RadioButton
                             key={option.value}
                             label={option.label}
