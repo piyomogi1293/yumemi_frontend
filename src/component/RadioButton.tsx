@@ -23,8 +23,9 @@ const RadioButton: FC<RadioButtonProps> = ({ label, value, checked, onChange }) 
     };
 
     return (
-        <label style={Styles.radio}>
+        <label key={value} style={Styles.radio}>
         <input
+        key={value}
         type="radio"
         value={value}
         checked={checked}
