@@ -57,7 +57,7 @@ const Graph: React.FC<Props> = ({ radioLabel, populationdata }) => {
     return (
         <div style={{marginLeft: "5pt", marginRight: "5pt"}}>
             <HighchartsReact highcharts={Highcharts} options={options}/>
-            <p style={{textAlign:"right", marginRight:"5px"}}>※ 2020年までが実績値。それ以降は推計値。</p>
+            <p style={{color:"black", textAlign:"right", marginRight:"5px"}}>※ 2020年までが実績値。それ以降は推計値。</p>
         </div>
     )
 

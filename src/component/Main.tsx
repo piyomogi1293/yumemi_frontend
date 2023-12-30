@@ -11,6 +11,7 @@ const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const Styles: { [key: string]: React.CSSProperties } = {
     label: {
         backgroundColor: "rgb(240,240,240)",
+        color: "black",
         fontSize: "20px",
         padding: "0.5rem 2rem",
         borderLeft: "4px solid #000",

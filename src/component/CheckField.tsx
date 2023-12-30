@@ -12,6 +12,7 @@ type Props = {
 
 const Styles: { [key: string]: React.CSSProperties } = {
     checkcardList: { // 全てのカードのデザイン
+        color: "black",
         display: "flex",
         flexWrap: "wrap",
         padding: "10px",

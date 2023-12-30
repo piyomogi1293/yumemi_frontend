@@ -8,9 +8,13 @@ interface RadioButtonGroupProps {
 }
 
 const Styles: { [key: string]: React.CSSProperties } = {
-    text: { margin: "10px" },
-    radioList_b: {
-        display: "flex",
+    text: { 
+        color: "black",
+        margin: "10px" 
+    },
+    radioList: {
+        color: "black",
+        //display: "flex",
         flexWrap: "wrap",
         justifyContent: "flex-start",
         justifySelf: "auto",
