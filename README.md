@@ -10,6 +10,7 @@
 * Axios 1.6.2
 * eslint 8.56.0
 * prettier 3.1.1
+* jest 29.7
 
 データは**RESAS API**から得たものを使用
 
