@@ -1,9 +1,9 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import CheckField from "./CheckField";
-import Graph from "./Charts";
+import CheckField from "../CheckField/CheckField";
+import Graph from "../Charts/Charts";
 import axios from "axios";
-import RadioButtonGroup from "./RadioButtonGroup";
+import RadioButtonGroup from "../RadioButtonGroup/RadioButtonGroup";
 
 // 環境変数を格納する(環境変数には命名規則があることに注意)
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
@@ -128,7 +128,6 @@ const Main: React.FC = () => {
             c_prefPopulation.splice(deleteIndex, 1);
             setPrefPopulation(c_prefPopulation);
         }
-        //console.log(c_prefPopulation)
     };
 
     /* ラジオボタンの選択肢 */
@@ -138,12 +137,11 @@ const Main: React.FC = () => {
         { label: '生産年齢人口', value: 'adult' },
         { label: '老年人口', value: 'elderly people' },
     ];
-    //console.log(options[0].label)
     const [selectedValue, setSelectedValue] = useState<string>(options[0].value);
     const handleRadioButtonChange = (value: string) => {
         setSelectedValue(value);
     };
-    console.log(selectedValue)
+    
     return (
         <main>
             {/* radio button */}
@@ -186,11 +184,6 @@ const Main: React.FC = () => {
                 />
             )))
             }
-
-            {/* <Graph
-            radioLabel={options.label}
-            populationdata={prefPopulation}
-            /> */}
         </main>
     )
 }

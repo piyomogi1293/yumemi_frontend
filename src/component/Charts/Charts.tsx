@@ -2,7 +2,6 @@
 import React from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from "highcharts-react-official";
-import { Imprima } from 'next/font/google';
 
 type Props = {
     radioLabel: string;
@@ -52,6 +51,9 @@ const Graph: React.FC<Props> = ({ radioLabel, populationdata }) => {
             series.length === 0
             ? [{ type: "line", name: "都道府県名", data: []}]
             : series,
+        accessibility: {
+            enabled: false,
+        }
     };
 
     return (
